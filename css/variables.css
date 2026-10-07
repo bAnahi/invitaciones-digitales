@@ -1,0 +1,27 @@
+:root {
+  /* Colores Principales */
+  --color-primary: #2D4A3E;      /* Verde Bosque Elegante */
+  --color-secondary: #8C2D38;    /* Corinto / Vino */
+  --color-accent: #C59B27;       /* Dorado / Moca */
+  
+  /* Fondos */
+  --color-bg-main: #FAFAFA;      /* Off-White */
+  --color-bg-card: #F5F0EB;      /* Crema / Beige Suave */
+  --color-bg-white: #FFFFFF;
+  
+  /* Textos */
+  --color-text-main: #2C2C2C;    /* Texto oscuro */
+  --color-text-muted: #6E6A66;   /* Texto secundario */
+  
+  /* Tipografías */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  /* Estilos reutilizables */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --transition: all 0.3s ease;
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 15px 35px rgba(45, 74, 62, 0.12);
+}

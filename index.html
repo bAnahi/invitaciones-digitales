@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Invitaciones digitales personalizadas para bodas, baby showers, XV años y eventos especiales por Boche's.">
+  <title>Boche's | Invitaciones Digitales Elegantes y Personalizadas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER Y NAVEGACIÓN
+       ========================================== -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="#inicio" class="logo">Boche's</a>
+
+      <!-- Botón Hamburguesa para Móvil -->
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación">
+        <span class="hamburger"></span>
+      </button>
+
+      <!-- Menú de Navegación -->
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+          <li><a href="#invitaciones" class="nav-link">Invitaciones</a></li>
+          <li><a href="#categorias" class="nav-link">Categorías</a></li>
+          <li><a href="#sobre-nosotros" class="nav-link">Sobre Nosotros</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       SECCIÓN HERO
+       ========================================== -->
+  <section class="hero" id="inicio">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <span class="badge">Diseños Exclusivos & Personalizados</span>
+        <h1 class="hero-title">Invitaciones que hacen inolvidable cada momento</h1>
+        <p class="hero-subtitle">
+          Diseñamos invitaciones digitales únicas para tus eventos más especiales. 
+          Elegancia, rapidez y personalización directamente en tu teléfono.
+        </p>
+        <div class="hero-buttons">
+          <a href="#invitaciones" class="btn btn-primary">Ver invitaciones</a>
+          <a href="#contacto" class="btn btn-outline">Personalizar mi invitación</a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper">
+        <div class="hero-card-preview">
+          <div class="placeholder-card">
+            <div class="placeholder-content">
+              <span class="placeholder-tag">Boda Real</span>
+              <h3>Sofía & Mateo</h3>
+              <p>¡Nos casamos!</p>
+              <div class="placeholder-date">24 · 11 · 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN CATEGORÍAS
+       ========================================== -->
+  <section class="section categories-section" id="categorias">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Explora por Categoría</h2>
+        <p>Encuentra el diseño perfecto según la ocasión especial</p>
+      </div>
+
+      <div class="categories-filter" id="categoriesFilter">
+        <!-- Carga dinámicamente desde main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN CATÁLOGO DE INVITACIONES
+       ========================================== -->
+  <section class="section catalog-section" id="invitaciones">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Nuestras Invitaciones</h2>
+        <p>Diseños modernos con mapas interactivos, confirmación RSVP y música</p>
+      </div>
+
+      <!-- BARRA DE BÚSQUEDA -->
+      <div class="search-container">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="🔍 Buscar por nombre o estilo (ej. boda, rosa, dorado)..."
+        />
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Tarjetas dinámicas con main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN: CÓMO FUNCIONA
+       ========================================== -->
+  <section id="como-funciona" class="section como-funciona-section">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>¿Cómo funciona?</h2>
+        <p>Obtén tu invitación digital personalizada en 4 sencillos pasos</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Elige tu diseño</h3>
+          <p>Explora nuestro catálogo y selecciona la invitación que mejor se adapte a tu evento.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Envíanos tus datos</h3>
+          <p>Escríbenos por WhatsApp indicando el modelo, nombre del festejado, fecha, hora y lugar.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Personalización</h3>
+          <p>Diseñamos tu invitación cuidando cada detalle y te enviamos una muestra previa.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Recibe y comparte</h3>
+          <p>Te entregamos la versión digital final lista para enviar a todos tus invitados por WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN: PREGUNTAS FRECUENTES (FAQ)
+       ========================================== -->
+  <section id="faq" class="section faq-section">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Preguntas Frecuentes</h2>
+        <p>Resuelve tus dudas sobre nuestras invitaciones digitales</p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Las invitaciones son 100% digitales?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sí, nuestras invitaciones son archivos en alta resolución optimizados para enviarse por WhatsApp, redes sociales o correo electrónico.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Puedo cambiar los colores y los textos del diseño?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>¡Por supuesto! Todos los datos de la celebración se personalizan. Si deseas cambios en la paleta de colores, también podemos adaptarla a la temática de tu fiesta.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto tiempo tarda la entrega?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>El tiempo habitual de entrega es de 24 horas después de confirmar los datos del evento y la compra.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Puedo solicitar un diseño desde cero?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sí, si tienes una idea específica o un tema diferente, creamos un diseño exclusivo para tu evento desde cero.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN: SOBRE NOSOTROS
+       ========================================== -->
+  <section id="sobre-nosotros" class="section sobre-nosotros-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <span class="product-category-tag">NUESTRA HISTORIA</span>
+          <h2>Diseños creados con amor para tus momentos especiales</h2>
+          <p>
+            En <strong>Boche's</strong> sabemos que cada evento es único e irrepetible. Nos apasiona cuidar cada detalle estético para que tus invitados sientan la emoción de tu celebración desde el primer mensaje.
+          </p>
+          <p>
+            Ubicados en Amatitlán, Guatemala, creamos invitaciones digitales elegantes, delicadas y personalizadas que se adaptan a tu estilo y presupuesto, listas para compartir al instante por WhatsApp y redes sociales.
+          </p>
+        </div>
+        <div class="about-badge-box">
+          <div class="badge-item">
+            <span class="badge-number">100%</span>
+            <span class="badge-text">Personalizado</span>
+          </div>
+          <div class="badge-item">
+            <span class="badge-number">24h</span>
+            <span class="badge-text">Tiempo de entrega</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN: CONTACTO
+       ========================================== -->
+  <section id="contacto" class="section contacto-section">
+    <div class="container text-center">
+      <div class="section-title">
+        <h2>¿Tienes alguna duda o diseño en mente?</h2>
+        <p>Estamos listos para ayudarte a crear la invitación perfecta para tu evento.</p>
+      </div>
+
+      <div class="contact-buttons-container">
+        <a href="https://wa.me/50247725339?text=Hola%20Boche's,%20quisiera%20cotizar%20una%20invitación%20personalizada." 
+           target="_blank" 
+           class="btn btn-whatsapp-large">
+           Solicitar por WhatsApp 💬
+        </a>
+      </div>
+
+      <div class="social-links-grid">
+        <div class="social-card">
+          <span class="social-icon">📍</span>
+          <h4>Ubicación</h4>
+          <p>Amatitlán, Guatemala</p>
+        </div>
+        <div class="social-card">
+          <span class="social-icon">📱</span>
+          <h4>WhatsApp</h4>
+          <p>+502 4772 5339</p>
+        </div>
+        <div class="social-card">
+          <span class="social-icon">📸</span>
+          <h4>Instagram</h4>
+          <p>@boches.invitaciones</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MODAL DE DETALLE DE INVITACIÓN
+       ========================================== -->
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar ventana">&times;</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Inyección dinámica -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FOOTER PRINCIPAL
+       ========================================== -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3 class="footer-logo">Boche's</h3>
+        <p>Invitaciones digitales elegantes y personalizadas para hacer inolvidable cada momento.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#invitaciones">Invitaciones</a></li>
+          <li><a href="#como-funciona">¿Cómo funciona?</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contacto</h4>
+        <p>Amatitlán, Guatemala</p>
+        <p>WhatsApp: +502 4772 5339</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Boche's. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts JavaScript -->
+  <script src="js/products.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
