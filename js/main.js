@@ -128,11 +128,6 @@ function filterProducts() {
   renderProducts(filtered);
 }
 
-// Evento al escribir en el buscador
-if (searchInput) {
-  searchInput.addEventListener('input', filterProducts);
-}
-
 // ==========================================
 // 4. MODAL DETALLE & WHATSAPP
 // ==========================================
@@ -141,23 +136,56 @@ const modalOverlay = document.getElementById('modalOverlay');
 const modalClose = document.getElementById('modalClose');
 const modalBody = document.getElementById('modalBody');
 
+let currentImageIndex = 0;
+
+function renderModalImageContainer(product) {
+  const images = (product.imagenes && product.imagenes.length > 0) ? product.imagenes : [product.imagen];
+  currentImageIndex = 0;
+
+  if (images.length <= 1) {
+    return `<img src="${images[0]}" alt="${product.nombre}" id="modal-product-img" style="width: 100%; max-width: 280px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); display: block; margin: 0 auto;">`;
+  }
+
+  return `
+    <div class="modal-carousel" style="position: relative; display: flex; justify-content: center; align-items: center; max-width: 280px; margin: 0 auto;">
+      <button class="carousel-btn prev-btn" onclick="changeModalImage(-1)" style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; z-index: 10; font-size: 18px; display: flex; align-items: center; justify-content: center;">&#10094;</button>
+      <img src="${images[0]}" alt="${product.nombre}" id="modal-product-img" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); display: block;">
+      <button class="carousel-btn next-btn" onclick="changeModalImage(1)" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; z-index: 10; font-size: 18px; display: flex; align-items: center; justify-content: center;">&#10095;</button>
+    </div>
+  `;
+}
+
+window.changeModalImage = function(direction) {
+  const product = window.currentModalProduct;
+  if (!product) return;
+  const images = (product.imagenes && product.imagenes.length > 0) ? product.imagenes : [product.imagen];
+  if (images.length <= 1) return;
+
+  currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+  const imgElement = document.getElementById('modal-product-img');
+  if (imgElement) {
+    imgElement.src = images[currentImageIndex];
+  }
+};
+
 async function verDetalle(id) {
   try {
     const producto = await ApiService.getProductById(id);
     if (!producto) return;
 
+    window.currentModalProduct = producto;
+
     const mensajeWhatsApp = encodeURIComponent(
       `¡Hola Boche's! Me interesa cotizar la invitación "${producto.nombre}" de la categoría ${producto.categoria} (Q${producto.precio}.00).`
     );
-    // Número limpio formateado para la API de WhatsApp (sin espacios ni el +)
     const numeroWhatsApp = "50247725339"; 
 
+    const imageContainerHTML = renderModalImageContainer(producto);
+
     modalBody.innerHTML = `
-      ${producto.imagen ? `
-        <div style="text-align: center; margin-bottom: 1.2rem;">
-          <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 100%; max-width: 280px; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); display: block; margin: 0 auto;">
-        </div>
-      ` : ''}
+      <div style="text-align: center; margin-bottom: 1.2rem;">
+        ${imageContainerHTML}
+      </div>
       <span class="product-category-tag">${producto.categoria}</span>
       <h2 class="modal-detail-title" style="margin-top: 0.5rem;">${producto.nombre}</h2>
       <div class="modal-detail-price">Q${producto.precio}.00</div>
@@ -183,7 +211,6 @@ async function verDetalle(id) {
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
 
-      // Asegura que al abrir se haga scroll hacia arriba
       const modalContent = modal.querySelector('.modal-content');
       if (modalContent) {
         modalContent.scrollTop = 0;
@@ -209,7 +236,6 @@ document.addEventListener('keydown', (e) => {
     cerrarModal();
   }
 });
-
 // ==========================================
 // 5. INICIALIZACIÓN ASÍNCRONA
 // ==========================================
