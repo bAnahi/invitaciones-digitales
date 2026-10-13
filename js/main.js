@@ -48,7 +48,7 @@ function showLoading() {
 function getCategories(products) {
   const categories = ['Todas'];
   products.forEach(product => {
-    if (!categories.includes(product.categoria)) {
+    if (product.categoria && !categories.includes(product.categoria)) {
       categories.push(product.categoria);
     }
   });
@@ -80,14 +80,14 @@ function renderProducts(productsToRender) {
   if (!productsGrid) return;
 
   if (productsToRender.length === 0) {
-    productsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--color-text-muted);">No se encontraron invitaciones que coincidan con tu búsqueda.</p>`;
+    productsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--color-text-muted); padding: 2rem;">No se encontraron invitaciones que coincidan con tu búsqueda.</p>`;
     return;
   }
 
   productsGrid.innerHTML = productsToRender.map(product => {
     const hasImage = Boolean(product.imagen);
     const mockupStyle = hasImage 
-      ? `background-image: url('${product.imagen}'); background-size: cover; background-position: center;`
+      ? `background-image: url('${product.imagen}'); background-size: cover; background-position: top center;`
       : '';
 
     return `
@@ -101,7 +101,7 @@ function renderProducts(productsToRender) {
         <div class="product-card-body">
           <span class="product-category-tag">${product.categoria}</span>
           <h3 class="product-title">${product.nombre}</h3>
-          <p class="product-description">${product.descripcion}</p>
+          <p class="product-description">${product.descripcion || ''}</p>
           <div class="product-card-footer">
             <span class="product-price">Q${product.precio}.00</span>
             <button class="btn btn-primary btn-card" onclick="verDetalle('${product.id}')">Ver Detalle</button>
@@ -118,14 +118,30 @@ function filterProducts() {
 
   const filtered = allProducts.filter(product => {
     const matchesCategory = (currentCategory === 'Todas') || (product.categoria === currentCategory);
-    const matchesQuery = product.nombre.toLowerCase().includes(query) ||
-                         product.descripcion.toLowerCase().includes(query) ||
-                         product.categoria.toLowerCase().includes(query);
+    
+    if (!matchesCategory) return false;
+    if (!query) return true;
 
-    return matchesCategory && matchesQuery;
+    const nombre = (product.nombre || '').toLowerCase();
+    const descripcion = (product.descripcion || '').toLowerCase();
+    const categoria = (product.categoria || '').toLowerCase();
+    const etiqueta = (product.etiqueta || '').toLowerCase();
+    const caracteristicas = (product.caracteristicas || []).join(' ').toLowerCase();
+
+    return nombre.includes(query) || 
+           descripcion.includes(query) || 
+           categoria.includes(query) || 
+           etiqueta.includes(query) || 
+           caracteristicas.includes(query);
   });
 
   renderProducts(filtered);
+}
+
+// Conexión del evento al buscador
+if (searchInput) {
+  searchInput.addEventListener('input', filterProducts);
+  searchInput.addEventListener('keyup', filterProducts);
 }
 
 // ==========================================
@@ -189,11 +205,11 @@ async function verDetalle(id) {
       <span class="product-category-tag">${producto.categoria}</span>
       <h2 class="modal-detail-title" style="margin-top: 0.5rem;">${producto.nombre}</h2>
       <div class="modal-detail-price">Q${producto.precio}.00</div>
-      <p style="margin-top: 0.8rem;">${producto.descripcion}</p>
+      <p style="margin-top: 0.8rem;">${producto.descripcion || ''}</p>
       
       <h4 style="margin-top: 1.5rem; color: var(--color-primary);">¿Qué incluye este diseño?</h4>
       <ul class="modal-features-list">
-        ${producto.caracteristicas.map(f => `<li>${f}</li>`).join('')}
+        ${(producto.caracteristicas || []).map(f => `<li>${f}</li>`).join('')}
       </ul>
       
       <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.8rem;">
@@ -209,7 +225,6 @@ async function verDetalle(id) {
 
     if (modal) {
       modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
 
       const modalContent = modal.querySelector('.modal-content');
       if (modalContent) {
@@ -224,7 +239,6 @@ async function verDetalle(id) {
 function cerrarModal() {
   if (modal) {
     modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
   }
 }
 
@@ -236,6 +250,7 @@ document.addEventListener('keydown', (e) => {
     cerrarModal();
   }
 });
+
 // ==========================================
 // 5. INICIALIZACIÓN ASÍNCRONA
 // ==========================================
@@ -263,20 +278,17 @@ function initFAQ() {
     question.addEventListener('click', () => {
       const faqItem = question.parentElement;
       
-      // Cierra otros elementos abiertos para mantener solo uno activo
       document.querySelectorAll('.faq-item').forEach(item => {
         if (item !== faqItem) {
           item.classList.remove('active');
         }
       });
 
-      // Alterna la clase activa en la pregunta seleccionada
       faqItem.classList.toggle('active');
     });
   });
 }
 
-// Ejecuta la función cuando el documento esté cargado
 document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
 });

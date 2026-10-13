@@ -1,7 +1,7 @@
 const PRODUCTS_DATA = [
   {
     id: "baby-shower-victoria",
-    nombre: "Llegada Esperdada - Baby Shower",
+    nombre: "Llegada Esperada - Baby Shower",
     categoria: "Baby Shower",
     precio: 23,
     etiqueta: "Destacado",
@@ -46,22 +46,6 @@ const PRODUCTS_DATA = [
       "Cita bíblica u oracional personalizada",
       "Sección con fecha, hora y dirección del evento",
       "Versión digital en alta resolución lista para WhatsApp"
-    ],
-    tiempoEntrega: "24 horas"
-  },
-  {
-    id: "cumpleanos-fiesta-dorada",
-    nombre: "Cumpleaños Fiesta Dorada",
-    categoria: "Cumpleaños",
-    precio: 30,
-    etiqueta: "Nuevo",
-    imagen: "assets/images/cumpleanos-fiesta.jpg",
-    descripcion: "Diseño festivo, moderno y colorido ideal para celebrar un año más de vida.",
-    caracteristicas: [
-      "Personalización con la edad y nombre",
-      "Botón de confirmación RSVP",
-      "Ubicación interactiva del evento",
-      "Cuenta regresiva"
     ],
     tiempoEntrega: "24 horas"
   },
@@ -128,6 +112,70 @@ const PRODUCTS_DATA = [
       "Cita bíblica u oracional personalizada",
       "Botón directo de ubicación del evento",
       "Confirmación de asistencia vía WhatsApp"
+    ],
+    tiempoEntrega: "24 horas"
+  },
+
+  {
+    id: "boda-carlos-rachel",
+    nombre: "Nuestra Boda - Bodas",
+    categoria: "Bodas",
+    precio: 50,
+    etiqueta: "Nuevo",
+    imagen: "assets/images/boda-carlos-rachel.png",
+    descripcion: "Elegante diseño nupcial con arreglos de lirios blancos, anillos dorados entrelazados, detalles botánicos y pasaje bíblico.",
+    caracteristicas: [
+      "Diseño elegante con flores nupciales y anillos dorados",
+      "Pasaje bíblico u oracional personalizado",
+    ],
+    tiempoEntrega: "24 horas"
+  },
+
+  {
+    id: "boda-santiago-sara",
+    nombre: "Pórtico Romano - Bodas",
+    categoria: "Bodas",
+    precio: 75,
+    etiqueta: "Nuevo",
+    imagen: "assets/images/boda-santiago-azul.png",
+    imagenes: [
+      "assets/images/boda-santiago-azul.png",
+      "assets/images/boda-santiago-naranja.png",
+      "assets/images/boda-santiago-morado.png",
+      "assets/images/boda-santiago-rosa.png"
+    ],
+    descripcion: "Diseño nupcial estilo acuarela con pórtico de columnas romanas, copas para brindis, follaje de hojas y pasaje bíblico.",
+    caracteristicas: [
+      "Disponible en 4 variaciones de color (Azul, Melocotón, Morado y Rosa)",
+      "Ilustración de columnas romanas y arreglos florales en acuarela",
+      "Detalle de copas de brindis al centro",
+      "Pasaje bíblico",
+      "Botón de ubicación del evento",
+      "Botón de confirmación de asistencia"
+    ],
+    tiempoEntrega: "24 horas"
+  },
+
+  {
+    id: "boda-carlos-sonia",
+    nombre: "Eucalipto & Anillos - Bodas",
+    categoria: "Bodas",
+    precio: 55,
+    etiqueta: "Nuevo",
+    imagen: "assets/images/boda-carlos-sonia-dorado.png",
+    imagenes: [
+      "assets/images/boda-carlos-sonia-dorado.png",
+      "assets/images/boda-carlos-sonia-verde.png"
+    ],
+    descripcion: "Diseño de boda botánico con marco circular para foto de la pareja, ramas de eucalipto, anillos de matrimonio y pasaje bíblico.",
+    caracteristicas: [
+      "Disponible en 2 tonos de marco (Dorado y Verde Olivo)",
+      "Marco circular para foto personalizada de los novios",
+      "Detalle central con anillos de matrimonio",
+      "Ilustraciones de ramas de eucalipto",
+      "Pasaje bíblico",
+      "Botón de ubicación del evento",
+      "Botón de confirmación de asistencia"
     ],
     tiempoEntrega: "24 horas"
   },
