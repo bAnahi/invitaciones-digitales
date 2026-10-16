@@ -29,7 +29,6 @@ navLinks.forEach(link => {
       e.preventDefault();
       switchView('estatica');
     } else if (href === '#sobre-nosotros' || href === '#contacto' || href === '#como-funciona' || href === '#faq') {
-      // Si el usuario hace clic en estas secciones, nos aseguramos de volver al Inicio para que sean visibles
       if (currentFormat !== 'inicio') {
         switchView('inicio');
       }
@@ -74,30 +73,62 @@ const contactSection = document.getElementById('contacto');
 function setLandingVisibility(isHome) {
   const displayVal = isHome ? 'block' : 'none';
 
-  // Mostrar u Ocultar componentes de la Landing Page
   if (heroSection) heroSection.style.display = displayVal;
   if (howItWorksSection) howItWorksSection.style.display = displayVal;
   if (faqSection) faqSection.style.display = displayVal;
   if (aboutSection) aboutSection.style.display = displayVal;
   if (contactSection) contactSection.style.display = displayVal;
 
-  // En Inicio ocultamos filtros de categorías y barra de búsqueda
   if (categoriesSection) categoriesSection.style.display = 'none';
   if (searchContainer) searchContainer.style.display = isHome ? 'none' : 'block';
 
-  // Título "Nuestras Invitaciones"
   if (catalogTitleSection) {
     catalogTitleSection.style.display = isHome ? 'block' : 'none';
   }
 }
 
 // ==========================================
-// 3. PANTALLA 1: INICIO (HOME)
+// 3. CONTROL DE HISTORIAL Y BOTÓN ATRÁS MÓVIL
+// ==========================================
+
+// Asegurar que el estado base del navegador sea la pantalla de inicio
+if (window.history && window.history.replaceState) {
+  window.history.replaceState({ format: 'inicio' }, '', '#inicio');
+}
+
+window.switchView = function(format, pushToHistory = true) {
+  currentFormat = format;
+  currentCategory = 'Todas';
+  if (searchInput) searchInput.value = '';
+
+  filterProducts();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Manejo acumulativo del historial para dispositivos móviles
+  if (pushToHistory && window.history && window.history.pushState) {
+    if (format !== 'inicio') {
+      window.history.pushState({ format: format }, '', `#${format}`);
+    } else {
+      window.history.pushState({ format: 'inicio' }, '', '#inicio');
+    }
+  }
+};
+
+// Escuchador para la flecha/gesto de navegación 'Atrás' del teléfono
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.format) {
+    switchView(e.state.format, false);
+  } else {
+    switchView('inicio', false);
+  }
+});
+
+// ==========================================
+// 4. PANTALLA 1: INICIO (HOME)
 // ==========================================
 function renderHomeSections() {
   if (!productsGrid) return;
 
-  // Activar visibilidad de todo el contenido de Inicio
   setLandingVisibility(true);
 
   productsGrid.innerHTML = `
@@ -156,48 +187,12 @@ function renderHomeSections() {
   `;
 }
 
-// Función global para cambiar entre Inicio y Catálogos con soporte para botón 'Atrás' del móvil
-window.switchView = function(format, pushToHistory = true) {
-  currentFormat = format;
-  currentCategory = 'Todas';
-  if (searchInput) searchInput.value = '';
-  
-  filterProducts();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  // Guardar el estado en el historial del navegador para capturar el botón "Atrás" del teléfono
-  if (pushToHistory) {
-    const stateObj = { format: format };
-    const hash = format === 'inicio' ? '#inicio' : `#${format}`;
-    history.pushState(stateObj, '', hash);
-  }
-};
-
-// Capturar cuando el usuario presiona el botón "Atrás" de su teléfono o navegador
-window.addEventListener('popstate', (e) => {
-  if (e.state && e.state.format) {
-    // Regresar a la vista guardada en el historial
-    switchView(e.state.format, false);
-  } else {
-    // Si no hay estado guardado o regresó al origen, mostrar la pantalla de inicio
-    switchView('inicio', false);
-  }
-});
-
-// Guardar el estado inicial al cargar la página por primera vez
-document.addEventListener('DOMContentLoaded', () => {
-  if (!history.state) {
-    history.replaceState({ format: 'inicio' }, '', '#inicio');
-  }
-});
-
 // ==========================================
-// 4. PANTALLA 2: VISTA LIMPIA DE CATÁLOGO
+// 5. PANTALLA 2: VISTA LIMPIA DE CATÁLOGO
 // ==========================================
 function renderCategoryButtons(productsOfFormat) {
   if (!categoriesFilter) return;
 
-  // Ocultar TODO el contenido del Inicio para dejar la pantalla limpia
   setLandingVisibility(false);
 
   const categories = ['Todas'];
@@ -328,7 +323,7 @@ if (searchInput) {
 }
 
 // ==========================================
-// 5. MODAL DETALLE & WHATSAPP
+// 6. MODAL DETALLE & WHATSAPP
 // ==========================================
 const modal = document.getElementById('productModal');
 const modalOverlay = document.getElementById('modalOverlay');
@@ -439,7 +434,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ==========================================
-// 6. INICIALIZACIÓN
+// 7. INICIALIZACIÓN
 // ==========================================
 document.addEventListener('DOMContentLoaded', async () => {
   if (productsGrid) {
