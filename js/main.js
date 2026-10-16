@@ -156,15 +156,40 @@ function renderHomeSections() {
   `;
 }
 
-// Función global para cambiar entre la pantalla de inicio y catálogos específicos
-window.switchView = function(format) {
+// Función global para cambiar entre Inicio y Catálogos con soporte para botón 'Atrás' del móvil
+window.switchView = function(format, pushToHistory = true) {
   currentFormat = format;
   currentCategory = 'Todas';
   if (searchInput) searchInput.value = '';
   
   filterProducts();
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Guardar el estado en el historial del navegador para capturar el botón "Atrás" del teléfono
+  if (pushToHistory) {
+    const stateObj = { format: format };
+    const hash = format === 'inicio' ? '#inicio' : `#${format}`;
+    history.pushState(stateObj, '', hash);
+  }
 };
+
+// Capturar cuando el usuario presiona el botón "Atrás" de su teléfono o navegador
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.format) {
+    // Regresar a la vista guardada en el historial
+    switchView(e.state.format, false);
+  } else {
+    // Si no hay estado guardado o regresó al origen, mostrar la pantalla de inicio
+    switchView('inicio', false);
+  }
+});
+
+// Guardar el estado inicial al cargar la página por primera vez
+document.addEventListener('DOMContentLoaded', () => {
+  if (!history.state) {
+    history.replaceState({ format: 'inicio' }, '', '#inicio');
+  }
+});
 
 // ==========================================
 // 4. PANTALLA 2: VISTA LIMPIA DE CATÁLOGO
