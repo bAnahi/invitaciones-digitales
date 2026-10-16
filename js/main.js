@@ -12,7 +12,7 @@ if (navToggle && navMenu) {
   });
 }
 
-// Escuchador para resetear al menú principal si se da clic en "Inicio"
+// Navegación del menú superior
 navLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     if (navMenu && navMenu.classList.contains('open')) {
@@ -21,15 +21,23 @@ navLinks.forEach(link => {
     }
     
     const href = link.getAttribute('href');
-    if (href === '#inicio' || href === '#invitaciones' || href === '#') {
+    if (href === '#inicio' || href === '#') {
       e.preventDefault();
       switchView('inicio');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (href === '#invitaciones') {
+      e.preventDefault();
+      switchView('estatica');
+    } else if (href === '#sobre-nosotros' || href === '#contacto' || href === '#como-funciona' || href === '#faq') {
+      // Si el usuario hace clic en estas secciones, nos aseguramos de volver al Inicio para que sean visibles
+      if (currentFormat !== 'inicio') {
+        switchView('inicio');
+      }
     }
   });
 });
 
-// Clic en el logo "Boche's" para regresar al inicio
+// Clic en el logo "Boche's" para regresar a la pantalla de Inicio
 const logoBtn = document.querySelector('.logo');
 if (logoBtn) {
   logoBtn.addEventListener('click', (e) => {
@@ -40,7 +48,7 @@ if (logoBtn) {
 }
 
 // ==========================================
-// 2. ESTADO GENERAL Y ELEMENTOS DOM
+// 2. ESTADO GENERAL Y CONTROL DE VISIBILIDAD
 // ==========================================
 let allProducts = [];
 let currentFormat = 'inicio'; // 'inicio', 'estatica', 'web', 'video'
@@ -50,20 +58,47 @@ const productsGrid = document.getElementById('productsGrid');
 const categoriesFilter = document.getElementById('categoriesFilter');
 const searchInput = document.getElementById('searchInput');
 
-const categorySectionTitle = categoriesFilter ? categoriesFilter.closest('section') : null;
+// Secciones que pertenecen únicamente a la pantalla de INICIO
+const heroSection = document.getElementById('inicio');
+const categoriesSection = document.getElementById('categorias');
+const catalogTitleSection = document.querySelector('#invitaciones .section-title');
+const searchContainer = document.querySelector('.search-container');
+const howItWorksSection = document.getElementById('como-funciona');
+const faqSection = document.getElementById('faq');
+const aboutSection = document.getElementById('sobre-nosotros');
+const contactSection = document.getElementById('contacto');
+
+/**
+ * Controla qué secciones se muestran según la vista actual
+ */
+function setLandingVisibility(isHome) {
+  const displayVal = isHome ? 'block' : 'none';
+
+  // Mostrar u Ocultar componentes de la Landing Page
+  if (heroSection) heroSection.style.display = displayVal;
+  if (howItWorksSection) howItWorksSection.style.display = displayVal;
+  if (faqSection) faqSection.style.display = displayVal;
+  if (aboutSection) aboutSection.style.display = displayVal;
+  if (contactSection) contactSection.style.display = displayVal;
+
+  // En Inicio ocultamos filtros de categorías y barra de búsqueda
+  if (categoriesSection) categoriesSection.style.display = 'none';
+  if (searchContainer) searchContainer.style.display = isHome ? 'none' : 'block';
+
+  // Título "Nuestras Invitaciones"
+  if (catalogTitleSection) {
+    catalogTitleSection.style.display = isHome ? 'block' : 'none';
+  }
+}
 
 // ==========================================
-// 3. VISTA INICIAL (3 SECCIONES PRINCIPALES)
+// 3. PANTALLA 1: INICIO (HOME)
 // ==========================================
 function renderHomeSections() {
   if (!productsGrid) return;
 
-  // Ocultar barra de categorías en la vista inicial
-  if (categorySectionTitle) {
-    categorySectionTitle.style.display = 'none';
-  } else if (categoriesFilter) {
-    categoriesFilter.style.display = 'none';
-  }
+  // Activar visibilidad de todo el contenido de Inicio
+  setLandingVisibility(true);
 
   productsGrid.innerHTML = `
     <div style="grid-column: 1/-1; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 1rem 0;">
@@ -121,24 +156,24 @@ function renderHomeSections() {
   `;
 }
 
-// Función global para cambiar entre inicio y formatos de catálogo
+// Función global para cambiar entre la pantalla de inicio y catálogos específicos
 window.switchView = function(format) {
   currentFormat = format;
   currentCategory = 'Todas';
   if (searchInput) searchInput.value = '';
+  
   filterProducts();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
 // ==========================================
-// 4. RENDERS DE NAVEGACIÓN Y PRODUCTOS
+// 4. PANTALLA 2: VISTA LIMPIA DE CATÁLOGO
 // ==========================================
 function renderCategoryButtons(productsOfFormat) {
   if (!categoriesFilter) return;
 
-  if (categorySectionTitle) {
-    categorySectionTitle.style.display = 'block';
-  }
-  categoriesFilter.style.display = 'flex';
+  // Ocultar TODO el contenido del Inicio para dejar la pantalla limpia
+  setLandingVisibility(false);
 
   const categories = ['Todas'];
   productsOfFormat.forEach(product => {
@@ -147,11 +182,19 @@ function renderCategoryButtons(productsOfFormat) {
     }
   });
 
+  const tituloFormato = currentFormat === 'estatica' ? 'Catálogo: Invitaciones Estáticas' : 
+                        currentFormat === 'web' ? 'Catálogo: Invitaciones Tipo Web' : 'Catálogo: Video Invitaciones';
+
+  categoriesFilter.style.display = 'flex';
   categoriesFilter.innerHTML = `
-    <button class="btn-back-home" onclick="switchView('inicio')">
-      ⬅️ Volver a Tipos de Invitación
-    </button>
-    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+    <div style="width: 100%; text-align: center; margin-bottom: 1.5rem;">
+      <button class="btn btn-outline" onclick="switchView('inicio')" style="border-radius: 20px; padding: 0.5rem 1.4rem; font-size: 0.9rem; margin-bottom: 1rem;">
+        ⬅️ Volver a Inicio
+      </button>
+      <h2 style="font-size: 2.2rem; color: var(--color-primary);">${tituloFormato}</h2>
+    </div>
+
+    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; width: 100%; margin-bottom: 1.5rem;">
       ${categories.map(cat => `
         <button class="category-btn ${cat === currentCategory ? 'active' : ''}" data-category="${cat}">
           ${cat}
@@ -176,9 +219,9 @@ function renderProducts(productsToRender) {
 
   if (productsToRender.length === 0) {
     productsGrid.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-        <p style="color: var(--color-text-muted);">No hay invitaciones disponibles en esta sección por el momento.</p>
-        <button class="btn btn-primary" style="margin-top: 1rem;" onclick="switchView('inicio')">Volver al Inicio</button>
+      <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem;">
+        <p style="color: var(--color-text-muted); font-size: 1.1rem;">No hay invitaciones disponibles en esta categoría por el momento.</p>
+        <button class="btn btn-primary" style="margin-top: 1.5rem;" onclick="switchView('inicio')">Volver al Inicio</button>
       </div>
     `;
     return;
@@ -371,7 +414,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ==========================================
-// 6. INICIALIZACIÓN Y ACORDEÓN
+// 6. INICIALIZACIÓN
 // ==========================================
 document.addEventListener('DOMContentLoaded', async () => {
   if (productsGrid) {
@@ -392,26 +435,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       productsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: red;">Error al conectar con el servidor.</p>`;
     }
   }
-});
 
-function initFAQ() {
+  // Inicialización de acordeón FAQ
   const faqQuestions = document.querySelectorAll('.faq-question');
-
   faqQuestions.forEach(question => {
     question.addEventListener('click', () => {
       const faqItem = question.parentElement;
-      
       document.querySelectorAll('.faq-item').forEach(item => {
-        if (item !== faqItem) {
-          item.classList.remove('active');
-        }
+        if (item !== faqItem) item.classList.remove('active');
       });
-
       faqItem.classList.toggle('active');
     });
   });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initFAQ();
 });
