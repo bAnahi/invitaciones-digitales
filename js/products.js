@@ -3,6 +3,7 @@ const PRODUCTS_DATA = [
     id: "baby-shower-victoria",
     nombre: "Llegada Esperada - Baby Shower",
     categoria: "Baby Shower",
+    formato: "estatica",
     precio: 23,
     etiqueta: "Destacado",
     imagen: "assets/images/baby-shower-victoria.png",
@@ -20,6 +21,7 @@ const PRODUCTS_DATA = [
     id: "boda-elegancia-botanica",
     nombre: "Elegancia Botánica",
     categoria: "Bodas",
+    formato: "estatica",
     precio: 50,
     etiqueta: "Popular",
     imagen: "assets/images/boda-elegancia.jpg",
@@ -31,11 +33,11 @@ const PRODUCTS_DATA = [
     ],
     tiempoEntrega: "24 a 48 horas"
   },
-  
- {
+  {
     id: "graduacion-excelencia-academica",
     nombre: "Mi Graduación - Graduación",
     categoria: "Graduaciones",
+    formato: "estatica",
     precio: 35,
     etiqueta: "Nuevo",
     imagen: "assets/images/Excelencia academica.png",
@@ -49,14 +51,14 @@ const PRODUCTS_DATA = [
     ],
     tiempoEntrega: "24 horas"
   },
-
   {
     id: "xv-verenice-estrada",
     nombre: "Jardín Imperial - XV Años",
     categoria: "XV años",
+    formato: "estatica",
     precio: 70,
     etiqueta: "Destacado",
-    imagen: "assets/images/xv-verenice-crema.png", // Imagen principal
+    imagen: "assets/images/xv-verenice-crema.png",
     imagenes: [
       "assets/images/xv-verenice-crema.png",
       "assets/images/xv-verenice-verde.png",
@@ -71,11 +73,11 @@ const PRODUCTS_DATA = [
     ],
     tiempoEntrega: "24 horas"
   },
-
   {
     id: "xv-clarissa-montes",
     nombre: "Flor de Cerezo - XV Años",
     categoria: "XV años",
+    formato: "estatica",
     precio: 30,
     etiqueta: "Popular",
     imagen: "assets/images/xv-clarissa-rosa.png",
@@ -91,11 +93,11 @@ const PRODUCTS_DATA = [
     ],
     tiempoEntrega: "24 horas"
   },
-
   {
     id: "xv-samantha-hernandez",
     nombre: "Reina Floral - XV Años",
     categoria: "XV años",
+    formato: "estatica",
     precio: 75,
     etiqueta: "Popular",
     imagen: "assets/images/xv-samantha-rosa.png",
@@ -115,26 +117,26 @@ const PRODUCTS_DATA = [
     ],
     tiempoEntrega: "24 horas"
   },
-
   {
     id: "boda-carlos-rachel",
     nombre: "Nuestra Boda - Bodas",
     categoria: "Bodas",
+    formato: "estatica",
     precio: 50,
     etiqueta: "Nuevo",
     imagen: "assets/images/boda-carlos-rachel.png",
     descripcion: "Elegante diseño nupcial con arreglos de lirios blancos, anillos dorados entrelazados, detalles botánicos y pasaje bíblico.",
     caracteristicas: [
       "Diseño elegante con flores nupciales y anillos dorados",
-      "Pasaje bíblico u oracional personalizado",
+      "Pasaje bíblico u oracional personalizado"
     ],
     tiempoEntrega: "24 horas"
   },
-
   {
     id: "boda-santiago-sara",
     nombre: "Pórtico Romano - Bodas",
     categoria: "Bodas",
+    formato: "estatica",
     precio: 75,
     etiqueta: "Nuevo",
     imagen: "assets/images/boda-santiago-azul.png",
@@ -155,11 +157,11 @@ const PRODUCTS_DATA = [
     ],
     tiempoEntrega: "24 horas"
   },
-
   {
     id: "boda-carlos-sonia",
     nombre: "Eucalipto & Anillos - Bodas",
     categoria: "Bodas",
+    formato: "estatica",
     precio: 55,
     etiqueta: "Nuevo",
     imagen: "assets/images/boda-carlos-sonia-dorado.png",
@@ -179,4 +181,25 @@ const PRODUCTS_DATA = [
     ],
     tiempoEntrega: "24 horas"
   },
+  {
+    id: "boda-mateo-sofia-web",
+    nombre: "Boda Interactiva - Mateo y Sofía",
+    categoria: "Bodas",
+    formato: "web",
+    precio: 350,
+    etiqueta: "Web Interactiva ✨",
+    imagen: "assets/images/boda-mateo-sofia-web.png",
+    demoUrl: "https://boche-invitaciones.my.canva.site/mateo-y-sofia",
+    descripcion: "Experiencia digital interactiva en formato sitio web para smartphones. Incluye sobre animado, música, mapa GPS, pases y confirmación de asistencia.",
+    caracteristicas: [
+      "📱 Diseño adaptado 100% a pantallas de teléfono móvil",
+      "✉️ Animación de sobre con pase personalizado",
+      "🎵 Reproductor con la canción de los novios",
+      "📍 Ubicación GPS directa en Waze y Google Maps",
+      "📸 Galería Polaroid estilo Save the Date",
+      "⏱️ Cuenta regresiva en tiempo real",
+      "📝 Confirmación digital RSVP vía WhatsApp / Formulario"
+    ],
+    tiempoEntrega: "24 a 48 horas"
+  }
 ];

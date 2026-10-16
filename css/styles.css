@@ -13,15 +13,15 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-bg-main);
-  color: var(--color-text-main);
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  background-color: var(--color-bg-main, #faf8f5);
+  color: var(--color-text-main, #333333);
   line-height: 1.6;
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-heading);
-  color: var(--color-primary);
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  color: var(--color-primary, #2d4a3e);
   font-weight: 600;
 }
 
@@ -72,7 +72,6 @@ header nav,
   margin: 0 auto;
 }
 
-/* Logo Boche's tipo texto elegante */
 .logo {
   font-family: var(--font-heading), 'Playfair Display', serif;
   font-size: 1.8rem;
@@ -83,9 +82,9 @@ header nav,
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
-/* Menú de navegación a la derecha */
 header ul,
 .nav-list,
 .nav-menu {
@@ -115,7 +114,6 @@ header ul li a:hover {
   color: var(--color-primary, #2d4a3e);
 }
 
-/* Subrayado sutil animado */
 .nav-link::after,
 header ul li a::after {
   content: '';
@@ -134,9 +132,6 @@ header ul li a:hover::after {
   width: 100%;
 }
 
-/* ==========================================
-   RESPONSIVE DESIGN (MÓVIL)
-   ========================================== */
 .nav-toggle {
   display: none;
   background: none;
@@ -166,7 +161,7 @@ header ul li a:hover::after {
     background-color: var(--color-bg-white, #ffffff);
     padding: 2rem !important;
     transition: var(--transition, all 0.3s ease);
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-soft, 0 4px 20px rgba(0,0,0,0.05));
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 1.5rem !important;
@@ -180,84 +175,43 @@ header ul li a:hover::after {
 }
 
 /* ==========================================
-   RESPONSIVE DESIGN (MÓVIL)
-   ========================================== */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-
-  header ul,
-  .nav-list,
-  .nav-menu {
-    position: fixed !important;
-    top: 65px;
-    left: -100% !important;
-    width: 100% !important;
-    height: calc(100vh - 65px);
-    background-color: var(--color-bg-white);
-    padding: 2rem !important;
-    transition: var(--transition);
-    box-shadow: var(--shadow-soft);
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 1.5rem !important;
-  }
-
-  header ul.open,
-  .nav-list.open,
-  .nav-menu.open {
-    left: 0 !important;
-  }
-}
-/* ==========================================
-   BOTONES REUTILIZABLES
+   BOTONES REUTILIZABLES & BADGES
    ========================================== */
 .btn {
   display: inline-block;
   padding: 0.85rem 1.8rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm, 8px);
   font-size: 0.95rem;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s ease;
   border: 2px solid transparent;
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-bg-white);
+  background-color: var(--color-primary, #2d4a3e);
+  color: #ffffff;
   box-shadow: 0 4px 15px rgba(45, 74, 62, 0.2);
 }
 
 .btn-primary:hover {
   background-color: #233b31;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
 }
 
 .btn-outline {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+  border-color: var(--color-primary, #2d4a3e);
+  color: var(--color-primary, #2d4a3e);
   background-color: transparent;
 }
 
 .btn-outline:hover {
-  background-color: var(--color-primary);
-  color: var(--color-bg-white);
+  background-color: var(--color-primary, #2d4a3e);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
-/* Badge Decorativo */
 .badge {
   display: inline-block;
   padding: 0.35rem 0.85rem;
@@ -272,17 +226,17 @@ header ul li a:hover::after {
 }
 
 /* ==========================================
-   SECCIÓN HERO
+   SECCIÓN HERO (RESTAURADA)
    ========================================== */
 .hero {
   padding: 4rem 0 5rem 0;
-  background: linear-gradient(180deg, var(--color-bg-main) 0%, var(--color-bg-card) 100%);
+  background: linear-gradient(180deg, var(--color-bg-main, #faf8f5) 0%, #f4efe6 100%);
   overflow: hidden;
 }
 
 .hero-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 3rem;
   align-items: center;
 }
@@ -295,7 +249,7 @@ header ul li a:hover::after {
 
 .hero-subtitle {
   font-size: 1.1rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted, #666666);
   margin-bottom: 2rem;
   max-width: 90%;
 }
@@ -306,7 +260,6 @@ header ul li a:hover::after {
   flex-wrap: wrap;
 }
 
-/* Mockup / Card Preview */
 .hero-image-wrapper {
   display: flex;
   justify-content: center;
@@ -316,13 +269,13 @@ header ul li a:hover::after {
 .hero-card-preview {
   width: 100%;
   max-width: 340px;
-  background-color: var(--color-bg-white);
-  border-radius: var(--radius-md);
+  background-color: #ffffff;
+  border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(197, 155, 39, 0.2);
   transform: rotate(-2deg);
-  transition: var(--transition);
+  transition: transform 0.3s ease;
 }
 
 .hero-card-preview:hover {
@@ -330,8 +283,8 @@ header ul li a:hover::after {
 }
 
 .placeholder-card {
-  border: 1px dashed var(--color-accent);
-  border-radius: var(--radius-sm);
+  border: 1px dashed var(--color-accent, #c5a059);
+  border-radius: 12px;
   padding: 2.5rem 1.5rem;
   text-align: center;
   background-color: #faf8f5;
@@ -341,7 +294,7 @@ header ul li a:hover::after {
   font-size: 0.75rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--color-secondary);
+  color: var(--color-secondary, #b8860b);
   font-weight: 700;
 }
 
@@ -351,19 +304,18 @@ header ul li a:hover::after {
 }
 
 .placeholder-card p {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, serif);
   font-style: italic;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted, #666666);
 }
 
 .placeholder-date {
   margin-top: 1.5rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-primary, #2d4a3e);
   letter-spacing: 2px;
 }
 
-/* Adaptación a celulares */
 @media (max-width: 900px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -401,9 +353,38 @@ header ul li a:hover::after {
 }
 
 .section-title p {
-  color: var(--color-text-muted);
+  color: var(--color-text-muted, #666666);
   font-size: 1.05rem;
   margin-bottom: 2.5rem;
+}
+
+/* ==========================================
+   BARRA DE BÚSQUEDA (RESTAURADA)
+   ========================================== */
+.search-container {
+  max-width: 500px;
+  margin: 0 auto 2.5rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.85rem 1.4rem;
+  border: 2px solid var(--color-primary, #2d4a3e);
+  border-radius: 30px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+  color: #333333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.search-input:focus {
+  border-color: var(--color-primary, #2d4a3e);
+  box-shadow: 0 4px 14px rgba(45, 74, 62, 0.18);
 }
 
 /* ==========================================
@@ -419,21 +400,21 @@ header ul li a:hover::after {
 
 .category-btn {
   padding: 0.6rem 1.4rem;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--color-primary, #2d4a3e);
   border-radius: 30px;
-  background-color: var(--color-bg-white);
-  color: var(--color-primary);
-  font-family: var(--font-body);
+  background-color: #ffffff;
+  color: var(--color-primary, #2d4a3e);
+  font-family: inherit;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
 
 .category-btn:hover,
 .category-btn.active {
-  background-color: var(--color-primary);
-  color: var(--color-bg-white);
+  background-color: var(--color-primary, #2d4a3e);
+  color: #ffffff;
   box-shadow: 0 4px 12px rgba(45, 74, 62, 0.2);
 }
 
@@ -447,67 +428,57 @@ header ul li a:hover::after {
 }
 
 .product-card {
-  background-color: var(--color-bg-white);
-  border-radius: var(--radius-md);
+  background-color: #ffffff;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.04);
-  transition: var(--transition);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .product-card-header {
   position: relative;
-  background-color: var(--color-bg-card);
-  height: 200px;
+  background-color: #f7f5f0;
+  min-height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
+  overflow: hidden;
+}
+
+.product-card-header.is-web-header {
+  padding: 1.2rem 1rem 0.5rem 1rem;
+  min-height: 320px;
 }
 
 .product-badge {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background-color: var(--color-secondary);
-  color: #fff;
+  background-color: var(--color-secondary, #b8860b);
+  color: #ffffff;
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.25rem 0.7rem;
   border-radius: 12px;
+  z-index: 5;
 }
 
 .product-preview-mockup {
-  border: 1px dashed var(--color-accent);
-  padding: 1.5rem 1rem;
   width: 100%;
-  height: 100%;
-  border-radius: var(--radius-sm);
-  background-color: #FAF8F5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.product-preview-mockup h4 {
-  font-size: 1.2rem;
-  color: var(--color-primary);
-}
-
-.product-preview-mockup span {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--color-secondary);
-  letter-spacing: 1px;
+  height: 220px;
+  background-size: cover !important;
+  background-position: top center !important;
+  background-repeat: no-repeat !important;
+  border-radius: 8px;
 }
 
 .product-card-body {
@@ -519,7 +490,7 @@ header ul li a:hover::after {
 
 .product-category-tag {
   font-size: 0.8rem;
-  color: var(--color-accent);
+  color: var(--color-accent, #c5a059);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -533,7 +504,7 @@ header ul li a:hover::after {
 
 .product-description {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted, #666666);
   margin-bottom: 1.2rem;
   flex-grow: 1;
 }
@@ -549,16 +520,278 @@ header ul li a:hover::after {
 .product-price {
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--color-primary);
-}
-
-.btn-card {
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
+  color: var(--color-primary, #2d4a3e);
 }
 
 /* ==========================================
-   MODAL DE DETALLE
+   MOCKUP SMARTPHONE PARA WEBS
+   ========================================== */
+.phone-mockup-frame {
+  width: 100%;
+  max-width: 180px;
+  height: 290px;
+  margin: 0 auto;
+  border: 7px solid #111111;
+  border-radius: 28px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  background-color: #000000;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.phone-mockup-frame-screen {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+}
+
+/* ==========================================
+   CÓMO FUNCIONA (PASOS RESTAURADOS EN TARJETAS)
+   ========================================== */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.step-card {
+  background-color: #ffffff;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary, #2d4a3e);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem auto;
+}
+
+.step-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+  color: var(--color-primary, #2d4a3e);
+}
+
+.step-card p {
+  font-size: 0.92rem;
+  color: var(--color-text-muted, #666666);
+  line-height: 1.5;
+}
+
+/* ==========================================
+   PREGUNTAS FRECUENTES (FAQ ACORDEÓN RESTAURADO)
+   ========================================== */
+.faq-container {
+  max-width: 780px;
+  margin: 2rem auto 0 auto;
+}
+
+.faq-item {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary, #2d4a3e);
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq-icon {
+  font-size: 1.4rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background-color: #faf8f5;
+  padding: 0 1.5rem;
+}
+
+.faq-answer p {
+  font-size: 0.92rem;
+  color: var(--color-text-muted, #555555);
+  line-height: 1.6;
+  margin: 0.8rem 0;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 180px;
+  padding: 0.8rem 1.5rem 1.2rem 1.5rem;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* ==========================================
+   SOBRE NOSOTROS (RESTAURADO)
+   ========================================== */
+.sobre-nosotros-section {
+  background-color: #f7f5f0;
+  padding: 4rem 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.about-content h2 {
+  font-size: 2.2rem;
+  margin: 0.8rem 0 1rem 0;
+  color: var(--color-primary, #2d4a3e);
+}
+
+.about-content p {
+  line-height: 1.6;
+  color: var(--color-text-muted, #555555);
+  margin-bottom: 1rem;
+}
+
+.about-badge-box {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.badge-item {
+  background-color: #ffffff;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.badge-number {
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--color-primary, #2d4a3e);
+  margin-bottom: 0.3rem;
+}
+
+.badge-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #666666);
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+/* ==========================================
+   CONTACTO (RESTAURADO)
+   ========================================== */
+.contacto-section {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.btn-whatsapp-large {
+  display: inline-block;
+  background-color: #25D366;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 1.1rem 3rem;
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 1.5rem auto 3rem auto;
+}
+
+.btn-whatsapp-large:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+}
+
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.social-card {
+  background: #ffffff;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.social-card:hover {
+  transform: translateY(-4px);
+}
+
+.social-icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.social-card h4 {
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.social-card p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted, #666666);
+}
+
+/* ==========================================
+   MODAL
    ========================================== */
 .modal {
   position: fixed;
@@ -592,13 +825,13 @@ header ul li a:hover::after {
 
 .modal-content {
   position: relative;
-  background-color: var(--color-bg-white);
+  background-color: #ffffff;
   width: 90%;
   max-width: 600px;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
-  border-radius: var(--radius-md);
-  padding: 2rem;
+  border-radius: 16px;
+  padding: 1.8rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   z-index: 2001;
 }
@@ -611,12 +844,7 @@ header ul li a:hover::after {
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: var(--color-text-muted);
-  transition: var(--transition);
-}
-
-.modal-close:hover {
-  color: var(--color-primary);
+  color: var(--color-text-muted, #666666);
 }
 
 .modal-detail-title {
@@ -627,7 +855,7 @@ header ul li a:hover::after {
 .modal-detail-price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-primary, #2d4a3e);
   margin-bottom: 1rem;
 }
 
@@ -645,7 +873,7 @@ header ul li a:hover::after {
 
 .modal-features-list li::before {
   content: "✓ ";
-  color: var(--color-accent);
+  color: var(--color-accent, #c5a059);
   font-weight: bold;
 }
 
@@ -653,8 +881,10 @@ header ul li a:hover::after {
   background-color: #25D366;
   color: white;
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   font-size: 1rem;
+  display: block;
+  text-align: center;
 }
 
 .btn-whatsapp:hover {
@@ -664,342 +894,6 @@ header ul li a:hover::after {
 
 /* ==========================================
    FOOTER
-   ========================================== */
-.footer {
-  background-color: var(--color-primary);
-  color: var(--color-bg-white);
-  padding: 3rem 0 1rem 0;
-}
-
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.footer-brand h3 {
-  color: var(--color-bg-white);
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.8);
-  transition: var(--transition);
-}
-
-.footer-links a:hover {
-  color: var(--color-accent);
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1rem;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* ==========================================
-   SPINNER DE CARGA (SIMULACIÓN API)
-   ========================================== */
-.spinner-container {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 0;
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid rgba(45, 74, 62, 0.1);
-  border-top-color: var(--color-primary);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* ==========================================
-   BARRA DE BÚSQUEDA
-   ========================================== */
-.search-container {
-  max-width: 500px;
-  margin: 0 auto 2rem auto;
-  padding: 0 1rem;
-}
-
-.search-input {
-  width: 100%;
-  padding: 0.8rem 1.2rem;
-  border: 2px solid rgba(45, 74, 62, 0.15);
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-size: 0.95rem;
-  outline: none;
-  transition: var(--transition);
-  background-color: var(--color-bg-white);
-}
-
-.search-input:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 8px rgba(45, 74, 62, 0.2);
-}
-
-/* ==========================================
-   MOCKUP PREVIEW Y TAMAÑO DE TARJETA
-   ========================================== */
-.product-preview-mockup {
-  height: 220px;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-bg-white);
-  transition: var(--transition);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Ajuste de scroll y altura para el Modal */
-.modal-content {
-  max-height: 85vh;
-  overflow-y: auto;
-  padding: 1.8rem;
-}
-
-/* ==========================================
-   ESTILOS: CÓMO FUNCIONA
-   ========================================== */
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.step-card {
-  background-color: var(--color-bg-white, #ffffff);
-  padding: 1.8rem 1.2rem;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
-
-.step-card:hover {
-  transform: translateY(-5px);
-}
-
-.step-number {
-  width: 45px;
-  height: 45px;
-  background-color: var(--color-primary, #6b705c);
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 1.2rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem auto;
-}
-
-.step-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: var(--color-text, #2b2b2b);
-}
-
-.step-card p {
-  font-size: 0.9rem;
-  color: var(--color-text-muted, #666666);
-  line-height: 1.4;
-}
-
-/* ==========================================
-   ESTILOS: PREGUNTAS FRECUENTES (FAQ)
-   ========================================== */
-.faq-container {
-  max-width: 750px;
-  margin: 2rem auto 0 auto;
-}
-
-.faq-item {
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  background-color: #ffffff;
-  overflow: hidden;
-}
-
-.faq-question {
-  width: 100%;
-  padding: 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: none;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-text, #2b2b2b);
-  cursor: pointer;
-  text-align: left;
-}
-
-.faq-icon {
-  font-size: 1.3rem;
-  font-weight: bold;
-  transition: transform 0.3s ease;
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  background-color: #faf9f6;
-  padding: 0 1.2rem;
-}
-
-.faq-answer p {
-  font-size: 0.92rem;
-  color: var(--color-text-muted, #555555);
-  line-height: 1.5;
-  margin: 0.8rem 0;
-}
-
-/* Estado activo del acordeón */
-.faq-item.active .faq-answer {
-  max-height: 150px;
-  padding: 0.8rem 1.2rem;
-}
-
-.faq-item.active .faq-icon {
-  transform: rotate(45deg);
-}
-
-/* ==========================================
-   ESTILOS: SOBRE NOSOTROS
-   ========================================== */
-.sobre-nosotros-section {
-  background-color: #faf9f6;
-  padding: 4rem 0;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.about-content h2 {
-  font-size: 1.8rem;
-  margin: 0.8rem 0 1rem 0;
-  color: var(--color-primary, #6b705c);
-}
-
-.about-content p {
-  line-height: 1.6;
-  color: var(--color-text-muted, #555555);
-  margin-bottom: 1rem;
-}
-
-.about-badge-box {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-.badge-item {
-  background-color: #ffffff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  flex: 1;
-}
-
-.badge-number {
-  display: block;
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--color-primary, #6b705c);
-}
-
-.badge-text {
-  font-size: 0.85rem;
-  color: var(--color-text-muted, #666);
-}
-
-/* ==========================================
-   ESTILOS: CONTACTO
-   ========================================== */
-.contacto-section {
-  padding: 4rem 0;
-}
-
-.btn-whatsapp-large {
-  display: inline-block;
-  background-color: #25D366;
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 1rem 2.5rem;
-  border-radius: 30px;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-bottom: 2.5rem;
-}
-
-.btn-whatsapp-large:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-}
-
-.social-links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.social-card {
-  background: #ffffff;
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.06);
-}
-
-.social-icon {
-  font-size: 1.8rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.social-card h4 {
-  margin-bottom: 0.3rem;
-}
-
-.social-card p {
-  font-size: 0.9rem;
-  color: var(--color-text-muted, #666);
-}
-
-/* ==========================================
-   ESTILOS: FOOTER
    ========================================== */
 .main-footer {
   background-color: #2b2b2b;
@@ -1052,12 +946,6 @@ header ul li a:hover::after {
   color: #ffffff;
 }
 
-.footer-contact p {
-  font-size: 0.9rem;
-  color: #bbbbbb;
-  margin-bottom: 0.4rem;
-}
-
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
@@ -1066,70 +954,22 @@ header ul li a:hover::after {
   color: #888888;
 }
 
-.product-preview-mockup {
-  height: 240px !important;
-  background-size: cover !important;
-  background-position: top center !important;
-  background-repeat: no-repeat !important;
-  border-radius: 8px 8px 0 0;
+.btn-back-home {
+  display: none;
 }
 
-/* Carrusel del Modal */
-.modal-carousel {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  border: none;
-  font-size: 1.5rem;
-  padding: 8px 14px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background 0.3s ease;
-  z-index: 10;
-}
-
-.carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.prev-btn { left: 10px; }
-.next-btn { right: 10px; }
-
-.carousel-indicators {
-  position: absolute;
-  bottom: 12px;
-  display: flex;
-  gap: 6px;
-}
-
-.carousel-indicators .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-}
-
-.carousel-indicators .dot.active {
-  background: #ffffff;
-  transform: scale(1.2);
-}
-
-.modal-img {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  display: block;
-  margin: 0 auto;
+@media (max-width: 768px) {
+  .btn-back-home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6c757d;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-bottom: 0.8rem;
+  }
 }
