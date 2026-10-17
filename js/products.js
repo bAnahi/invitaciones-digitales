@@ -17,22 +17,7 @@ const PRODUCTS_DATA = [
     ],
     tiempoEntrega: "24 horas"
   },
-  {
-    id: "boda-elegancia-botanica",
-    nombre: "Elegancia Botánica",
-    categoria: "Bodas",
-    formato: "estatica",
-    precio: 50,
-    etiqueta: "Popular",
-    imagen: "assets/images/boda-elegancia.jpg",
-    descripcion: "Diseño sofisticado con detalles florales en tonos verdes y dorados.",
-    caracteristicas: [
-      "Confirmación RSVP a WhatsApp",
-      "Ubicación interactiva en Waze y Google Maps",
-      "Mesa de regalos y datos bancarios"
-    ],
-    tiempoEntrega: "24 a 48 horas"
-  },
+
   {
     id: "graduacion-excelencia-academica",
     nombre: "Mi Graduación - Graduación",
@@ -186,8 +171,8 @@ const PRODUCTS_DATA = [
     nombre: "Boda Interactiva - Mateo y Sofía",
     categoria: "Bodas",
     formato: "web",
-    precio: 350,
-    etiqueta: "Web Interactiva ✨",
+    precio: 255,
+    etiqueta: "Web Interactiva",
     imagen: "assets/images/boda-mateo-sofia-web.png",
     demoUrl: "https://boche-invitaciones.my.canva.site/mateo-y-sofia",
     descripcion: "Experiencia digital interactiva en formato sitio web para smartphones. Incluye sobre animado, música, mapa GPS, pases y confirmación de asistencia.",
@@ -201,5 +186,48 @@ const PRODUCTS_DATA = [
       "📝 Confirmación digital RSVP vía WhatsApp / Formulario"
     ],
     tiempoEntrega: "24 a 48 horas"
-  }
+  },
+
+  {
+  id: "15-anos-tatiana-web",
+  nombre: "15 Años Interactivas - Tatiana",
+  categoria: "XV años",
+  formato: "web",
+  precio: 240,
+  etiqueta: "Destacado",
+  imagen: "assets/images/15-anos-tatiana-web.png",
+  demoUrl: "https://boche-invitaciones.my.canva.site/xv-primaveras",
+  descripcion: "Invitación web interactiva para XV años con sobre animado azul marino, música de fondo, itinerario, ubicación GPS y confirmación de asistencia RSVP.",
+  caracteristicas: [
+    "Sobre animado interactivo con sello dorado",
+    "Reproductor de música integrado (¡Dale play!)",
+    "Contador regresivo en tiempo real",
+    "Botones interactivos para mapa GPS (Misa y Recepción)",
+    "Sección para sugerencia de obsequios / sobres",
+    "Confirmación de asistencia directa (RSVP)"
+  ],
+  tiempoEntrega: "24 a 48 horas"
+},
+
+{
+  id: "baby-shower-santiago-web",
+  nombre: "Baby Shower Interactivo - Santiago",
+  categoria: "Baby Shower",
+  formato: "web",
+  precio: 75,
+  etiqueta: "Nuevo",
+  imagen: "assets/images/baby-shower-santiago-web.png",
+  demoUrl: "https://boche-invitaciones.my.canva.site/", // <-- Reemplaza con tu link publicado de Canva
+  descripcion: "Encantadora invitación web interactiva para Baby Shower con temática de osito en globo aerostático, reproductor de música, mapa de ubicación, lista de regalos y contador regresivo.",
+  caracteristicas: [
+    "Diseño animado con temática de osito y nubes celestes",
+    "Reproductor de música integrado (¡Dale play!)",
+    "Versículo y texto bíblico personalizado",
+    "Botón directo con mapa de ubicación GPS",
+    "Botón interactivo para Mesa/Lista de Regalos",
+    "Contador regresivo en tiempo real",
+    "Confirmación de asistencia directa (RSVP)"
+  ],
+  tiempoEntrega: "24 a 48 horas"
+}
 ];

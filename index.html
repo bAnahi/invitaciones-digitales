@@ -22,15 +22,14 @@
       </button>
 
       <!-- Menú de Navegación -->
-      <nav class="nav-menu" id="navMenu">
-        <ul class="nav-list">
-          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-          <li><a href="#invitaciones" class="nav-link">Invitaciones</a></li>
-          <li><a href="#categorias" class="nav-link">Categorías</a></li>
-          <li><a href="#sobre-nosotros" class="nav-link">Sobre Nosotros</a></li>
-          <li><a href="#contacto" class="nav-link">Contacto</a></li>
-        </ul>
-      </nav>
+<nav class="nav-menu" id="navMenu">
+  <ul class="nav-list">
+    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+    <li><a href="#invitaciones" class="nav-link">Invitaciones</a></li>
+    <li><a href="#sobre-nosotros" class="nav-link">Sobre Nosotros</a></li>
+    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+  </ul>
+</nav>
     </div>
   </header>
 
@@ -70,18 +69,14 @@
   <!-- ==========================================
        SECCIÓN CATEGORÍAS
        ========================================== -->
-  <section class="section categories-section" id="categorias">
-    <div class="container">
-      <div class="section-title text-center">
-        <h2>Explora por Categoría</h2>
-        <p>Encuentra el diseño perfecto según la ocasión especial</p>
-      </div>
-
-      <div class="categories-filter" id="categoriesFilter">
-        <!-- Carga dinámicamente desde main.js -->
-      </div>
+  <!-- ==========================================
+       CONTENEDOR DE CATEGORÍAS EN CATÁLOGOS
+       ========================================== -->
+  <div class="container" style="margin-top: 1rem;">
+    <div class="categories-filter" id="categoriesFilter" style="display: none;">
+      <!-- Carga dinámicamente únicamente dentro de los catálogos -->
     </div>
-  </section>
+  </div>
 
   <!-- ==========================================
        SECCIÓN CATÁLOGO DE INVITACIONES
@@ -197,6 +192,15 @@
             <p>Sí, si tienes una idea específica o un tema diferente, creamos un diseño exclusivo para tu evento desde cero.</p>
           </div>
         </div>
+        <div class="faq-item">
+  <button class="faq-question">
+    <span>¿Cuáles son los métodos de pago disponibles?</span>
+    <span class="faq-icon">+</span>
+  </button>
+  <div class="faq-answer">
+    <p>Aceptamos transferencias bancarias locales (Banrural) y depósitos. También podemos coordinar tu pago directo al confirmar tu diseño por WhatsApp.</p>
+  </div>
+</div>
       </div>
     </div>
   </section>

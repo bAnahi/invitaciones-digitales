@@ -82,8 +82,15 @@ function setLandingVisibility(isHome) {
   if (categoriesSection) categoriesSection.style.display = 'none';
   if (searchContainer) searchContainer.style.display = isHome ? 'none' : 'block';
 
+  // Título "Nuestras Invitaciones" de la Landing
   if (catalogTitleSection) {
     catalogTitleSection.style.display = isHome ? 'block' : 'none';
+  }
+
+  // SI ES INICIO: Ocultar de inmediato el bloque de categorías de los catálogos
+  if (isHome && categoriesFilter) {
+    categoriesFilter.style.display = 'none';
+    categoriesFilter.innerHTML = '';
   }
 }
 
@@ -104,7 +111,6 @@ window.switchView = function(format, pushToHistory = true) {
   filterProducts();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Manejo acumulativo del historial para dispositivos móviles
   if (pushToHistory && window.history && window.history.pushState) {
     if (format !== 'inicio') {
       window.history.pushState({ format: format }, '', `#${format}`);
@@ -114,7 +120,7 @@ window.switchView = function(format, pushToHistory = true) {
   }
 };
 
-// Escuchador para la flecha/gesto de navegación 'Atrás' del teléfono
+// Escuchador para la flecha/gesto de navegación 'Atrás' del teléfono o navegador
 window.addEventListener('popstate', (e) => {
   if (e.state && e.state.format) {
     switchView(e.state.format, false);
@@ -144,7 +150,7 @@ function renderHomeSections() {
           <h3 class="product-title" style="margin-top: 0.5rem;">Invitaciones Estáticas</h3>
           <p class="product-description">Diseños elegantes en imagen digital de alta resolución, ideales para enviar directo por WhatsApp.</p>
           <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="switchView('estatica')">
-            Explorar Catálogo 📄
+            Explorar Catálogo 
           </button>
         </div>
       </article>
@@ -161,7 +167,7 @@ function renderHomeSections() {
           <h3 class="product-title" style="margin-top: 0.5rem;">Invitaciones Tipo Web</h3>
           <p class="product-description">Experiencias interactivas tipo sitio web con sobre animado, música, confirmación RSVP y mapas GPS.</p>
           <button class="btn" style="width: 100%; margin-top: 1rem; background-color: #2b5e54; color: white;" onclick="switchView('web')">
-            Explorar Web Interactivas 🌐
+            Explorar Web Interactivas 
           </button>
         </div>
       </article>
@@ -206,12 +212,12 @@ function renderCategoryButtons(productsOfFormat) {
                         currentFormat === 'web' ? 'Catálogo: Invitaciones Tipo Web' : 'Catálogo: Video Invitaciones';
 
   categoriesFilter.style.display = 'flex';
+  categoriesFilter.style.flexDirection = 'column';
+  categoriesFilter.style.alignItems = 'center';
+
   categoriesFilter.innerHTML = `
-    <div style="width: 100%; text-align: center; margin-bottom: 1.5rem;">
-      <button class="btn btn-outline" onclick="switchView('inicio')" style="border-radius: 20px; padding: 0.5rem 1.4rem; font-size: 0.9rem; margin-bottom: 1rem;">
-        ⬅️ Volver a Inicio
-      </button>
-      <h2 style="font-size: 2.2rem; color: var(--color-primary);">${tituloFormato}</h2>
+    <div style="width: 100%; text-align: center; margin-bottom: 1rem;">
+      <h2 style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 0.5rem;">${tituloFormato}</h2>
     </div>
 
     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; width: 100%; margin-bottom: 1.5rem;">
@@ -277,7 +283,7 @@ function renderProducts(productsToRender) {
             <div style="display: flex; gap: 0.4rem;">
               ${product.demoUrl ? `
                 <a href="${product.demoUrl}" target="_blank" class="btn" style="background-color: #2b5e54; color: white; padding: 0.5rem 0.8rem; font-size: 0.85rem; text-decoration: none; border-radius: 8px;">
-                  Ver Demo 🌐
+                  Ver Demo 
                 </a>
               ` : ''}
               <button class="btn btn-primary btn-card" style="padding: 0.5rem 0.8rem; font-size: 0.85rem;" onclick="verDetalle('${product.id}')">
@@ -401,7 +407,7 @@ async function verDetalle(id) {
            target="_blank" 
            class="btn" 
            style="background-color: #2b5e54; color: white; margin-bottom: 0.8rem; text-align: center; display: block; text-decoration: none;">
-           Probar Demo Interactiva en Vivo 🌐
+           Probar Demo Interactiva en Vivo 
         </a>
       ` : ''}
 
@@ -410,6 +416,10 @@ async function verDetalle(id) {
          class="btn btn-whatsapp">
          Pedir por WhatsApp 💬
       </a>
+
+      <p style="text-align: center; font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem;">
+        💳 <strong>Métodos de pago:</strong> Transferencia bancaria o depósito local.
+      </p>
     `;
 
     if (modal) {
