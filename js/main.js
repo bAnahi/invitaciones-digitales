@@ -140,14 +140,14 @@ function renderHomeSections() {
   productsGrid.innerHTML = `
     <div style="grid-column: 1/-1; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 1rem 0;">
       
-      <!-- 1. Invitaciones Estáticas -->
+      <!-- 1. Invitaciones en Imagen HD -->
       <article class="product-card">
         <div class="product-card-header">
-          <span class="product-badge">Imagen HD</span>
+          <span class="product-badge">Imagen / PDF</span>
           <div class="product-preview-mockup" style="background-image: url('assets/images/boda-carlos-rachel.png');"></div>
         </div>
         <div class="product-card-body" style="text-align: center;">
-          <h3 class="product-title" style="margin-top: 0.5rem;">Invitaciones Estáticas</h3>
+          <h3 class="product-title" style="margin-top: 0.5rem;">Invitaciones en Imagen HD</h3>
           <p class="product-description">Diseños elegantes en imagen digital de alta resolución, ideales para enviar directo por WhatsApp.</p>
           <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="switchView('estatica')">
             Explorar Catálogo 
@@ -158,16 +158,16 @@ function renderHomeSections() {
       <!-- 2. Invitaciones Web Interactivas -->
       <article class="product-card">
         <div class="product-card-header is-web-header">
-          <span class="product-badge" style="background-color: #2b5e54;">Interactivas ✨</span>
+          <span class="product-badge" style="background-color: #2b5e54;">Interactivas</span>
           <div class="phone-mockup-frame">
             <div class="phone-mockup-frame-screen" style="background-image: url('assets/images/boda-mateo-sofia-web.png');"></div>
           </div>
         </div>
         <div class="product-card-body" style="text-align: center;">
-          <h3 class="product-title" style="margin-top: 0.5rem;">Invitaciones Tipo Web</h3>
+          <h3 class="product-title" style="margin-top: 0.5rem;">Invitaciones Web Interactivas</h3>
           <p class="product-description">Experiencias interactivas tipo sitio web con sobre animado, música, confirmación RSVP y mapas GPS.</p>
           <button class="btn" style="width: 100%; margin-top: 1rem; background-color: #2b5e54; color: white;" onclick="switchView('web')">
-            Explorar Web Interactivas 
+            Explorar Catálogo 
           </button>
         </div>
       </article>
@@ -390,7 +390,14 @@ async function verDetalle(id) {
       ${imageHeaderHTML}
       <span class="product-category-tag">${producto.categoria}</span>
       <h2 class="modal-detail-title" style="margin-top: 0.5rem;">${producto.nombre}</h2>
-      <div class="modal-detail-price">Q${producto.precio}.00</div>
+      
+      <div class="modal-detail-price" style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.5rem;">
+        <span style="font-size: 1.6rem; font-weight: bold; color: var(--color-primary);">Q${producto.precio}.00</span>
+        <span style="background-color: #2b5e54; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.3px;">
+          Oferta de Lanzamiento
+        </span>
+      </div>
+      
       <p style="margin-top: 0.8rem;">${producto.descripcion || ''}</p>
       
       <h4 style="margin-top: 1.5rem; color: var(--color-primary);">¿Qué incluye este diseño?</h4>
