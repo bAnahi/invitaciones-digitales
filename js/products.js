@@ -168,7 +168,7 @@ const PRODUCTS_DATA = [
   },
   {
     id: "boda-mateo-sofia-web",
-    nombre: "Boda Interactiva - Mateo y Sofía",
+    nombre: "Enlace Matrimonial - Bodas",
     categoria: "Bodas",
     formato: "web",
     precio: 240,
@@ -190,7 +190,7 @@ const PRODUCTS_DATA = [
 
   {
   id: "15-anos-tatiana-web",
-  nombre: "15 Años Interactivas - Tatiana",
+  nombre: "15 primaveras - XV Años",
   categoria: "XV años",
   formato: "web",
   precio: 225,
@@ -211,7 +211,7 @@ const PRODUCTS_DATA = [
 
 {
   id: "baby-shower-santiago-web",
-  nombre: "Baby Shower Interactivo - Santiago",
+  nombre: "Pequeños Pasos - Baby Shower",
   categoria: "Baby Shower",
   formato: "web",
   precio: 150,
